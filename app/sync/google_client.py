@@ -12,7 +12,16 @@ class GoogleSheetClient:
         self.service = None
         self.sheet_id = settings.GOOGLE_SHEET_ID
 
-        if os.path.exists(settings.GOOGLE_CREDENTIALS_FILE):
+        if settings.GOOGLE_CREDENTIALS_JSON:
+            import json
+            from google.oauth2 import service_account
+
+            creds_dict = json.loads(settings.GOOGLE_CREDENTIALS_JSON)
+            self.creds = service_account.Credentials.from_service_account_info(
+                creds_dict, scopes=SCOPES
+            )
+            self.service = build("sheets", "v4", credentials=self.creds)
+        elif os.path.exists(settings.GOOGLE_CREDENTIALS_FILE):
             self.creds = service_account.Credentials.from_service_account_file(
                 settings.GOOGLE_CREDENTIALS_FILE, scopes=SCOPES
             )

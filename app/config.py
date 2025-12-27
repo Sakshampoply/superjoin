@@ -5,6 +5,7 @@ from pydantic_settings import BaseSettings
 class Settings(BaseSettings):
     DATABASE_URL: str = "postgresql+asyncpg://user:password@localhost/dbname"
     GOOGLE_CREDENTIALS_FILE: str = "credentials.json"
+    GOOGLE_CREDENTIALS_JSON: str = ""  # New field for JSON string content
     GOOGLE_SHEET_ID: str = ""
 
     class Config:
