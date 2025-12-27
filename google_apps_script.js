@@ -51,7 +51,7 @@ function syncToBackend(e) {
   };
 
   // Replace with your actual public URL (e.g., ngrok)
-  const API_URL = "https://preluxurious-sonny-superciliously.ngrok-free.dev/sync/batch-from-sheet";
+  const API_URL = "https://superjoin-ko0j.onrender.com/sync/batch-from-sheet";
   
   try {
     const options = {
